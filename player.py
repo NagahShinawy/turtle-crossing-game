@@ -12,7 +12,6 @@ UP_KEY = "Up"
 
 
 class Player(TurtleConfig):
-
     def __init__(self, shape=TURTLE_SHAPE, position=STARTING_POSITION, *args, **kwargs):
         super().__init__(shape=shape, position=position, *args, **kwargs)
         self.setheading(UP)
