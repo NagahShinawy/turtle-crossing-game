@@ -12,7 +12,14 @@ UP_KEY = "Up"
 
 
 class Player(TurtleConfig):
-    def __init__(self, shape=TURTLE_SHAPE, position=STARTING_POSITION, color=TURTLE_WHITE_COLOR, *args, **kwargs):
+    def __init__(
+        self,
+        shape=TURTLE_SHAPE,
+        position=STARTING_POSITION,
+        color=TURTLE_WHITE_COLOR,
+        *args,
+        **kwargs
+    ):
         super().__init__(shape=shape, position=position, color=color, *args, **kwargs)
         self.setheading(UP)
 
@@ -27,4 +34,4 @@ class Player(TurtleConfig):
         self.goto(STARTING_POSITION)
 
     def is_collision_with_car(self, cars):
-        return any(car.distance(self) < 25 for car in cars)
+        return any(car.distance(self) < 20 for car in cars)

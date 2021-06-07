@@ -34,7 +34,7 @@ def play():
             game_is_on = False
         if player.is_win:
             player.go_to_start()
-            scoreboard.increase_score()
+            scoreboard.increase_score_and_level()
             carmanager.speedup()
 
 

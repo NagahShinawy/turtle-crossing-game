@@ -27,7 +27,7 @@ COLORS = [
     "dark orange",
     "hot pink",
     "magenta",
-    "orange"
+    "orange",
 ]
 STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
@@ -43,11 +43,10 @@ STARTING_CAR_Y_POINT = (-250, 250)
 class Car(TurtleConfig):
     def __init__(self, shape, position, color, *args, **kwargs):
         super().__init__(shape=shape, position=position, color=color, *args, **kwargs)
-        self.shapesize(stretch_len=1.5, stretch_wid=.5)
+        self.shapesize(stretch_len=1.5, stretch_wid=0.5)
 
 
 class CarManger:
-
     def __init__(self):
         self.cars = []
         self.speed = STARTING_MOVE_DISTANCE
@@ -57,7 +56,11 @@ class CarManger:
         if random_chance == 1:
             random_x = random.randint(*STARTING_CAR_X_POINT)
             random_y = random.randint(*STARTING_CAR_Y_POINT)
-            new_car = Car(shape=CAR_SHAPE, position=(random_x, random_y), color=random.choice(COLORS))
+            new_car = Car(
+                shape=CAR_SHAPE,
+                position=(random_x, random_y),
+                color=random.choice(COLORS),
+            )
             self.cars.append(new_car)
 
     def move_cars(self):

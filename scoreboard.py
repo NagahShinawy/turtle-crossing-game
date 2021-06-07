@@ -22,14 +22,14 @@ class Scoreboard(Turtle):
 
     def create_scoreboard(self):
         self.color(WHITE)
-        self.penup()
         self.hideturtle()
+        self.penup()
         self.goto(SCORE_POSITION)
         self.update_scoreboard(
             text=self.score_info.format(score=self.score, level=self.level)
         )
 
-    def increase_score(self):
+    def increase_score_and_level(self):
         self.score += 1
         self.level += 1
         self.clear()
