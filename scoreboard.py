@@ -15,7 +15,7 @@ WHITE = "white"
 class Scoreboard(Turtle):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.result = 0
+        self.score = 0
         self.level = 1
         self.score_info = SCORE_INFO
         self.create_scoreboard()
@@ -25,13 +25,17 @@ class Scoreboard(Turtle):
         self.penup()
         self.hideturtle()
         self.goto(SCORE_POSITION)
-        self.update_scoreboard(text=self.score_info.format(score=self.result, level=self.level))
+        self.update_scoreboard(
+            text=self.score_info.format(score=self.score, level=self.level)
+        )
 
     def increase_score(self):
-        self.result += 1
+        self.score += 1
         self.level += 1
         self.clear()
-        self.update_scoreboard(text=self.score_info.format(score=self.result, level=self.level))
+        self.update_scoreboard(
+            text=self.score_info.format(score=self.score, level=self.level)
+        )
 
     def update_scoreboard(self, text):
         self.write(text, align=CENTER, font=FONT)
