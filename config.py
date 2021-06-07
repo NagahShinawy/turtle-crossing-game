@@ -22,12 +22,12 @@ def screen_setup():
 
 
 class TurtleConfig(Turtle):
-    def __init__(self, shape, position=CENTER, *args, **kwargs):
+    def __init__(self, shape, position, color, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.create(shape, position)
+        self.create(shape, position, color)
 
-    def create(self, shape, position):
+    def create(self, shape, position, color):
         self.shape(shape)
         self.penup()
-        self.color(TURTLE_WHITE_COLOR)
+        self.color(color)
         self.goto(position)
