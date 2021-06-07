@@ -3,11 +3,10 @@ created by Nagaj at 06/06/2021
 """
 import time
 
-from car_manager import Car, CarManger, LEFT_KEY
+from car_manager import CarManger
 from config import screen_setup
+from scoreboard import Scoreboard
 from player import Player, UP_KEY
-from level import Level
-
 
 # ###########################################
 screen = screen_setup()
@@ -16,9 +15,10 @@ screen.listen()
 # ###########################################
 player = Player()
 carmanager = CarManger()
-lvl = Level()
+scoreboard = Scoreboard()
 screen.onkey(key=UP_KEY, fun=player.move_to_up)
-# screen.onkey(key=LEFT_KEY, fun=carmanager.move_cars)
+
+
 # ############################################
 
 
@@ -29,10 +29,13 @@ def play():
         screen.update()
         carmanager.create_car()
         carmanager.move_cars()
+        if player.is_collision_with_car(carmanager.cars):
+            scoreboard.game_over()
+            game_is_on = False
         if player.is_win:
-            player.start_again()
-            lvl.next_level()
-            break
+            player.go_to_start()
+            scoreboard.increase_score()
+            carmanager.speedup()
 
 
 def main():

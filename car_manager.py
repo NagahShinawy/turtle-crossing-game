@@ -3,7 +3,7 @@ created by Nagaj at 06/06/2021
 """
 import random
 
-from config import TurtleConfig, TURTLE_WHITE_COLOR
+from config import TurtleConfig
 
 COLORS = [
     "red",
@@ -50,13 +50,19 @@ class CarManger:
 
     def __init__(self):
         self.cars = []
+        self.speed = STARTING_MOVE_DISTANCE
 
     def create_car(self):
-        random_x = random.randint(*STARTING_CAR_X_POINT)
-        random_y = random.randint(*STARTING_CAR_Y_POINT)
-        new_car = Car(shape=CAR_SHAPE, position=(random_x, random_y), color=random.choice(COLORS))
-        self.cars.append(new_car)
+        random_chance = random.randint(1, 6)
+        if random_chance == 1:
+            random_x = random.randint(*STARTING_CAR_X_POINT)
+            random_y = random.randint(*STARTING_CAR_Y_POINT)
+            new_car = Car(shape=CAR_SHAPE, position=(random_x, random_y), color=random.choice(COLORS))
+            self.cars.append(new_car)
 
     def move_cars(self):
         for car in self.cars:
-            car.backward(STARTING_MOVE_DISTANCE)
+            car.backward(self.speed)
+
+    def speedup(self):
+        self.speed += MOVE_INCREMENT

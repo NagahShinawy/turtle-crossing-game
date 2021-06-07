@@ -5,7 +5,7 @@ from config import TurtleConfig, TURTLE_WHITE_COLOR
 
 STARTING_POSITION = (0, -280)
 MOVE_DISTANCE = 10
-FINISH_LINE_Y = 280
+FINISH_LINE_Y = 290
 TURTLE_SHAPE = "turtle"
 UP = 90
 UP_KEY = "Up"
@@ -23,9 +23,8 @@ class Player(TurtleConfig):
     def is_win(self):
         return self.ycor() >= FINISH_LINE_Y
 
-    def start_again(self):
-        self.setheading(-UP)
+    def go_to_start(self):
         self.goto(STARTING_POSITION)
 
-    def is_collision_with_car(self):
-        return
+    def is_collision_with_car(self, cars):
+        return any(car.distance(self) < 25 for car in cars)
