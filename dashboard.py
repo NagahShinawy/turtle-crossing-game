@@ -12,7 +12,7 @@ DEFAULT_POSITION = 0, 0
 WHITE = "white"
 
 
-class Scoreboard(Turtle):
+class Dashboard(Turtle):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.score = 0
